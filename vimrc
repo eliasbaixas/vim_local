@@ -364,8 +364,6 @@ map ]] j0[[%/{
 map [] k$][%?}
 "map gd /[^a-zA-Z_]<CR>byn[[/\<"\><CR>
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -743,131 +741,131 @@ map <leader>s? z=
    endfunction
 
    function Prepare_for_c()
-   "set tabstop=3
-   set sts=4
-   set ts=8
-   set shiftwidth=3
-   set cindent
-   "	set formatoptions=croql
-   ab #i #include <><LEFT>
-   ab #I #include ""<LEFT>
-   ab #d #define
-   iab printf( printf("\n");<LEFT><LEFT><LEFT><LEFT><LEFT>
-		   iab while( while () {<CR>}<UP><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT>
-			   iab for( for (;;) {<CR>}<UP><RIGHT><RIGHT><RIGHT><RIGHT>
-				   iab if( if () {<CR>}<UP><RIGHT><RIGHT><RIGHT>
-					   iab elsif if () {<CR>} else {<CR>}<UP><UP><RIGHT><RIGHT><RIGHT>
-					   iab intmain int main (int argc, char **argv) {<CR>return 0;<CR>}<UP>
-					   iab /*/ /*<CR><HOME> *	func() - desc<CR><HOME> *		 returns ...<CR><HOME> *<CR><HOME> *	param: desc<CR><HOME> */<CR>
-					   "  Tohle se moc nepovedlo
-					   "  exec ":command! -range Comment :execute \"normal <esc><esc>i/*<esc>gv<esc><esc>lla*/<esc>\""
-					   nmap <Leader>s :A<CR>
-					   nmap <Leader>doc i/**<CR><BS>* function_name:<CR>* @param1: desc<CR>*<CR>* function description<CR>*<CR>* Returns: what<CR>*/<CR><ESC>?function_name<CR>
-					   endfunction
+       "set tabstop=3
+       set sts=4
+       set ts=8
+       set shiftwidth=3
+       set cindent
+       "	set formatoptions=croql
+       ab #i #include <><LEFT>
+       ab #I #include ""<LEFT>
+       ab #d #define
+       iab printf( printf("\n");<LEFT><LEFT><LEFT><LEFT><LEFT>
+       iab while( while () {<CR>}<UP><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT>
+       iab for( for (;;) {<CR>}<UP><RIGHT><RIGHT><RIGHT><RIGHT>
+       iab if( if () {<CR>}<UP><RIGHT><RIGHT><RIGHT>
+       iab elsif if () {<CR>} else {<CR>}<UP><UP><RIGHT><RIGHT><RIGHT>
+       iab intmain int main (int argc, char **argv) {<CR>return 0;<CR>}<UP>
+       iab /*/ /*<CR><HOME> *	func() - desc<CR><HOME> *		 returns ...<CR><HOME> *<CR><HOME> *	param: desc<CR><HOME> */<CR>
+       "  Tohle se moc nepovedlo
+       "  exec ":command! -range Comment :execute \"normal <esc><esc>i/*<esc>gv<esc><esc>lla*/<esc>\""
+       nmap <Leader>s :A<CR>
+       nmap <Leader>doc i/**<CR><BS>* function_name:<CR>* @param1: desc<CR>*<CR>* function description<CR>*<CR>* Returns: what<CR>*/<CR><ESC>?function_name<CR>
+   endfunction
 
-					   function Prepare_for_tex()
-					   set makeprg=cslatex\ %
-					   endfunction
+   function Prepare_for_tex()
+       set makeprg=cslatex\ %
+   endfunction
 
-					   function Prepare_for_po()
-					   set makeprg=msgfmt\ -c\ -o\ /dev/null\ -vv\ %
-					   autocmd BufWritePre,FileWritePre * ks|call PO_date()|'s
-					   nmap <F9> :make<CR>
-					   nmap <F8> :ks<CR>:w<CR>:call PO_spell()<CR>:'s<CR>
-					   "  nmap <F4> j0wDk0wv$hyj$pj
-					   " replace msgstr with msgid
-					   " <F4> should copy field #msgstr to field #msgdst
-					   nmap <F4> j?^#<CR>/^msgid<CR>V/^msgstr<CR>kY/^msgstr<CR>P/^msgstr<CR>V/^$<CR>kd?^msgid<CR>dwimsgstr <esc>
-					   imap <F10> "\n"<CR>
-					   nmap <C-I> j?^#<CR>/^msgstr<CR>wa
-					   endfunction
+   function Prepare_for_po()
+       set makeprg=msgfmt\ -c\ -o\ /dev/null\ -vv\ %
+       autocmd BufWritePre,FileWritePre * ks|call PO_date()|'s
+       nmap <F9> :make<CR>
+       nmap <F8> :ks<CR>:w<CR>:call PO_spell()<CR>:'s<CR>
+       "  nmap <F4> j0wDk0wv$hyj$pj
+       " replace msgstr with msgid
+       " <F4> should copy field #msgstr to field #msgdst
+       nmap <F4> j?^#<CR>/^msgid<CR>V/^msgstr<CR>kY/^msgstr<CR>P/^msgstr<CR>V/^$<CR>kd?^msgid<CR>dwimsgstr <esc>
+       imap <F10> "\n"<CR>
+       nmap <C-I> j?^#<CR>/^msgstr<CR>wa
+   endfunction
 
-					   function Prepare_for_pov()
-					   set cinoptions=s,e0,n0,f0,{0,}0,^0,:s,=s,ps,ts,c3,+0,(2s,us,)20,*30,gs,hs
-					   set shiftwidth=2
-					   set cinkeys=0{,0},!^F,o,O,*<Return>
-					   set cinwords=#while,else
-					   set autoindent
-					   set nosmartindent
-					   set cindent
-					   "  set makeprg=povray\ +I\ %\ +D\ +P
-					   exec "command! Help :execute '!links ~/bin/povray31/html/povuser.htm'"
-					   endfunction
+   function Prepare_for_pov()
+       set cinoptions=s,e0,n0,f0,{0,}0,^0,:s,=s,ps,ts,c3,+0,(2s,us,)20,*30,gs,hs
+       set shiftwidth=2
+       set cinkeys=0{,0},!^F,o,O,*<Return>
+       set cinwords=#while,else
+       set autoindent
+       set nosmartindent
+       set cindent
+       "  set makeprg=povray\ +I\ %\ +D\ +P
+       exec "command! Help :execute '!links ~/bin/povray31/html/povuser.htm'"
+   endfunction
 
-					   function PO_spell()
-					   execute "normal :w"
-					   let file=bufname(winbufnr(winnr()))
-					   let command="pospell -n ".file." -p ispell -- -d czech -p ~/po_dictionary.ispell \\%f"
-					   execute (system (command))
-					   execute "normal :e\<CR>\<C-l>"
-					   endfunction
+   function PO_spell()
+       execute "normal :w"
+       let file=bufname(winbufnr(winnr()))
+       let command="pospell -n ".file." -p ispell -- -d czech -p ~/po_dictionary.ispell \\%f"
+       execute (system (command))
+       execute "normal :e\<CR>\<C-l>"
+   endfunction
 
-					   function PO_date()
-					   if line("$") > 30
-						   let l = 30
-					   else
-						   let l = line("$")
-							   endif
-							   exe "1,".l."g/PO-Revision-Date/s/PO-Revision-Date.*/PO-Revision-Date: ".strftime('%Y-%m-%d %H:%M%z').'\\n"'
-							   exe "1,".l."g/Last-Translator/s/Last-Translator.*/Last-Translator: Vladimír Marek <vlmarek@volny.cz>".'\\n"'
-							   endfunction
+   function PO_date()
+       if line("$") > 30
+           let l = 30
+       else
+           let l = line("$")
+       endif
+       exe "1,".l."g/PO-Revision-Date/s/PO-Revision-Date.*/PO-Revision-Date: ".strftime('%Y-%m-%d %H:%M%z').'\\n"'
+       exe "1,".l."g/Last-Translator/s/Last-Translator.*/Last-Translator: Vladimír Marek <vlmarek@volny.cz>".'\\n"'
+   endfunction
 
-							   augroup gzip
-							   autocmd!
-							   autocmd BufReadPre,FileReadPre	*.gz set bin
-							   autocmd BufReadPost,FileReadPost	*.gz '[,']!gunzip
-							   autocmd BufReadPost,FileReadPost	*.gz set nobin
-							   autocmd BufReadPost,FileReadPost	*.gz execute ":doautocmd BufReadPost " . expand("%:r")
-							   autocmd BufWritePost,FileWritePost	*.gz !mv <afile> <afile>:r
-							   autocmd BufWritePost,FileWritePost	*.gz !gzip <afile>:r
+   augroup gzip
+       autocmd!
+       autocmd BufReadPre,FileReadPre	*.gz set bin
+       autocmd BufReadPost,FileReadPost	*.gz '[,']!gunzip
+       autocmd BufReadPost,FileReadPost	*.gz set nobin
+       autocmd BufReadPost,FileReadPost	*.gz execute ":doautocmd BufReadPost " . expand("%:r")
+       autocmd BufWritePost,FileWritePost	*.gz !mv <afile> <afile>:r
+       autocmd BufWritePost,FileWritePost	*.gz !gzip <afile>:r
 
-							   autocmd FileAppendPre		*.gz !gunzip <afile>
-							   autocmd FileAppendPre		*.gz !mv <afile>:r <afile>
-							   autocmd FileAppendPost		*.gz !mv <afile> <afile>:r
-							   autocmd FileAppendPost		*.gz !gzip <afile>:r
-							   augroup END
+       autocmd FileAppendPre		*.gz !gunzip <afile>
+       autocmd FileAppendPre		*.gz !mv <afile>:r <afile>
+       autocmd FileAppendPost		*.gz !mv <afile> <afile>:r
+       autocmd FileAppendPost		*.gz !gzip <afile>:r
+   augroup END
 
-							   function GetPerlFold()
-							   if getline(v:lnum) =~ '^\s*sub\s'
-								   return ">1"
-									   elseif getline(v:lnum) =~ '\}\s*$'
-									   let my_perlnum = v:lnum
-									   let my_perlmax = line("$")
-									   while (1)
-										   let my_perlnum = my_perlnum + 1
-											   if my_perlnum > my_perlmax
-												   return "<1"
-													   endif
-													   let my_perldata = getline(my_perlnum)
-													   if my_perldata =~ '^\s*\(\#.*\)\?$'
-														   " do nothing
-															   elseif my_perldata =~ '^\s*sub\s'
-															   return "<1"
-													   else
-														   return "="
-															   endif
-															   endwhile
-											   else
-												   return "="
-													   endif
-													   endfunction
+   function GetPerlFold()
+       if getline(v:lnum) =~ '^\s*sub\s'
+           return ">1"
+       elseif getline(v:lnum) =~ '\}\s*$'
+           let my_perlnum = v:lnum
+           let my_perlmax = line("$")
+           while (1)
+               let my_perlnum = my_perlnum + 1
+               if my_perlnum > my_perlmax
+                   return "<1"
+               endif
+               let my_perldata = getline(my_perlnum)
+               if my_perldata =~ '^\s*\(\#.*\)\?$'
+                   " do nothing
+               elseif my_perldata =~ '^\s*sub\s'
+                   return "<1"
+               else
+                   return "="
+               endif
+           endwhile
+       else
+           return "="
+       endif
+   endfunction
 
-													   func! s:cfgType()
-													   let max = line("$") > 50 ? 50 : line("$")
-													   for n in range(1, max)
-														   if getline(n) =~ '^\s*modparam\s*('
-																   setf openser
-																   return
-																   elseif getline(n) =~ '^\s*loadmodule\s*"[^"]\+.so"\s*$'
-																   setf openser
-																   return
-																   elseif getline(n) =~ '^\s*route\s*{\s*'
-																   setf openser
-																   return
-																   endif
-																   endfor
-																   setf cfg
-																   endfunc 
+   func! s:cfgType()
+       let max = line("$") > 50 ? 50 : line("$")
+       for n in range(1, max)
+           if getline(n) =~ '^\s*modparam\s*('
+               setf openser
+               return
+           elseif getline(n) =~ '^\s*loadmodule\s*"[^"]\+.so"\s*$'
+               setf openser
+               return
+           elseif getline(n) =~ '^\s*route\s*{\s*'
+               setf openser
+               return
+           endif
+       endfor
+       setf cfg
+   endfunc 
 
 
    """"""""""""""""""""""""""""""
