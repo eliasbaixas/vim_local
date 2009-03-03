@@ -1,0 +1,1 @@
+manpageview.vba: call delete('/Users/elias/vim_local/plugin/manpageview.vim')|call delete('/Users/elias/vim_local/syntax/man.vim')|call delete('/Users/elias/vim_local/syntax/mankey.vim')|call delete('/Users/elias/vim_local/syntax/info.vim')|call delete('/Users/elias/vim_local/syntax/manphp.vim')|call delete('/Users/elias/vim_local/doc/manpageview.txt')
